@@ -24,6 +24,7 @@ public class DriveSystem extends SubsystemBase {
 
     private AHRS navX;
 
+    public static final double TICKS_PER_ROTATION = 4096.0;
     private static final double MAX_OUTPUT = 400;
     private static final double TURBO_OUTPUT = 475;
     private static final double PEAK_OUTPUT = 1.0;
