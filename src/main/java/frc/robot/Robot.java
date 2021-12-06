@@ -28,6 +28,10 @@ public class Robot extends TimedRobot {
 
   public static final DriveSystem drive = new DriveSystem();
 
+  public static final IntakeSystem intake = new IntakeSystem();
+
+  public static final ShooterSystem shooter = new ShooterSystem();
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
