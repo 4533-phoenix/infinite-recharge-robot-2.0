@@ -37,7 +37,10 @@ public class ShooterSystem extends SubsystemBase{
 
     private WPI_VictorSPX turretWheelMotor;
 
-    private WPI_TalonSRX turretSwivelMotor;
+	private WPI_TalonSRX turretSwivelMotor;
+	
+	
+	private double targetOffsetAngle_Horizontal;
 
     private double startFlywheelRotations = 0;
 	private double currFlywheelRotations = 0;
@@ -106,5 +109,46 @@ public class ShooterSystem extends SubsystemBase{
 	public boolean flywheelReachedPosition(int balls) {
 		double targetPosition = (balls * 30) * DriveSystem.TICKS_PER_ROTATION;
 		return flywheelMotorRight.getSelectedSensorPosition() >= targetPosition;
+	}
+
+	public void turretIntakeIn() {
+		this.turretWheelMotor.set(ControlMode.PercentOutput, TURRET_SWIVEL_MOTOR_PERCENT);
+	}
+
+	public void turretIntakeOut() {
+		this.turretWheelMotor.set(ControlMode.PercentOutput, -TURRET_SWIVEL_MOTOR_PERCENT);
+	}
+
+	public void turretIntakeStop() {
+		this.turretWheelMotor.set(ControlMode.PercentOutput, 0);
+	}
+
+	public void turretSwivelLeft() {
+		this.turretSwivelMotor.set(ControlMode.PercentOutput, TURRET_SWIVEL_MOTOR_PERCENT);
+	}
+
+	public void turretSwivelRight() {
+		this.turretSwivelMotor.set(ControlMode.PercentOutput, -TURRET_SWIVEL_MOTOR_PERCENT);
+	}
+
+	public void turretSwivelStop() {
+		this.turretSwivelMotor.set(ControlMode.PercentOutput, 0);
+	}
+
+	public void word() {
+		System.out.println("Test");
+	}
+
+	public void autoTurretSwivel() {
+		if (targetOffsetAngle_Horizontal > 1) {
+			this.turretSwivelRight();
+		}
+		else if (targetOffsetAngle_Horizontal < -1) {
+			this.turretSwivelLeft();
+		}
+	}
+
+	public boolean turretReachedPosition() {
+		return targetOffsetAngle_Horizontal > -1 && targetOffsetAngle_Horizontal < 1;
 	}
 }
