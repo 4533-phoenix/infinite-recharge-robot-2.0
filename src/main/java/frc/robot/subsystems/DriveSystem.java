@@ -33,10 +33,10 @@ public class DriveSystem extends SubsystemBase {
     private static final int DEFAULT_TIMEOUT = 30;
 
     public DriveSystem() {
-        leftMaster = new WPI_TalonSRX(0);
-        rightMaster = new WPI_TalonSRX(1);
-        leftSlave = new WPI_TalonSRX(2);
-        rightSlave = new WPI_TalonSRX(3);
+        leftMaster = new WPI_TalonSRX(2);
+        rightMaster = new WPI_TalonSRX(0);
+        leftSlave = new WPI_TalonSRX(3);
+        rightSlave = new WPI_TalonSRX(1);
 
         leftSlave.follow(leftMaster, FollowerType.AuxOutput1);
         rightSlave.follow(rightMaster, FollowerType.AuxOutput1);

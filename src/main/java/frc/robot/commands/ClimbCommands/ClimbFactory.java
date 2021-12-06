@@ -15,4 +15,18 @@ public class ClimbFactory {
             Robot.climb
         );
     }
+
+    public static Command hookDownCommand() {
+        return new InstantCommand(
+            () -> Robot.climb.hookDown(),
+            Robot.climb
+        );
+    }
+
+    public static Command climb() {
+        return new InstantCommand(
+            () -> Robot.climb.climb(),
+            Robot.climb
+        );
+    }
 }
